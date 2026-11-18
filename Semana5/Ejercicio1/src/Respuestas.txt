@@ -1,0 +1,12 @@
+Que sucede al importar clase1: Funciona sin problemas porque Clase1 tiene modificador public y se puede ver desde cualquier paquete.
+
+Que sucede al importar clase2: da error de compilación ("The type paquete1.Clase2 is not visible") porque al no tener modificador (default o package-private), solo es accesible dentro de paquete1.
+
+¿Qué sucede al acceder a los atributos y métodos de Clase1 desde paquete2?
+public: entra sin problema tanto al atributo como al método.   
+Sin modificador (default): da un error de compilación; solo se puede acceder desde clases dentro del mismo paquete (paquete1).   
+protected: error de compilación; solo se puede acceder desde el mismo paquete (paquete1) o desde subclases (clases que hereden de Clase1 con extends); App no cumple ninguna de las dos condiciones.   
+private: error de compilación; solo se puede acceder dentro de la propia clase Clase1 donde se declaró.
+
+Propósito de los modificadores de visibilidad y ejemplo: Su propósito es aplicar el principio de encapsulación: ocultar los detalles internos y proteger el estado de un objeto para evitar que otras clases modifiquen sus datos de forma directa o inconsistente, enseñando únicamente una interfaz controlada.
+Ejemplo: En una clase CuentaBancaria, el atributo private double saldo; se declara privado para que nadie externo pueda hacer cuenta.saldo = -500;, mientras que se ofrecen métodos public void ingresar(double cantidad) y public double getSaldo() que validan que las operaciones sean correctas antes de modificar el dato.
